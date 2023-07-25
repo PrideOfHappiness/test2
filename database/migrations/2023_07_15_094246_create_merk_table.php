@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('merk', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_merk')->unique();
+            $table->string('nama_merk');
+            $table->enum('jenis_merek', ['Passenger Car', 'Commercial Vehicle']);
             $table->timestamps();
         });
     }

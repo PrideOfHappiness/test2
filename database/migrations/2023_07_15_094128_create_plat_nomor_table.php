@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_negara')->unique();
             $table->string('nama_negara');
+            $table->string('issueing');
+            $table->string('keterangan')->nullable();
             $table->string('namaFile');
             $table->timestamps();
         });

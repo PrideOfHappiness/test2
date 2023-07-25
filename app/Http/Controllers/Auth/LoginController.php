@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -36,5 +40,21 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request){
+        $input = $request->only('kode_users', 'password');
+        if(Auth::attempt(array('kode_users' => $input['kode_users'], 'password' => $input['password']))){
+            if(Auth::user()->status == "Admin"){
+                return redirect()->route('adminHome');
+            }else if(Auth::user()->status == "Users"){
+                return redirect()->route('usersHome');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Maaf, Email dan/atau Password anda salah.');
+        }
     }
 }

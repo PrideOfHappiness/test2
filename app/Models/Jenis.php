@@ -13,6 +13,11 @@ class Jenis extends Model
 
     protected $fillable = [
         'kode_jenis',
-        'nama_jenis'
+        'nama_jenis',
+        'keterangan',
     ];
+
+    public function GambarJenis(){
+        return $this->hasMany(GambarJenis::class, "jenis_id");
+    }
 }
