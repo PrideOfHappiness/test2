@@ -13,5 +13,20 @@ class DrivingLocation extends Model
 
     protected $fillable = [
         'location',
+        'namaFile',
     ];
+
+    public function getLocation()
+    {
+        switch ($this->location) {
+            case 'RHD':
+                return 'Right Hand Drive';
+            case 'LHD':
+                return 'Left Hand Drive';
+            case 'MHD':
+                return 'Middle Hand Drive';
+            default:
+                return 'Unknown';
+        }
+    }
 }

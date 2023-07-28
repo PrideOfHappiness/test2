@@ -14,5 +14,6 @@ class Mesin extends Model
     protected $fillable = [
         'kode_mesin',
         'nama_mesin',
+        'jenis_mesin',
     ];
 }

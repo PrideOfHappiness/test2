@@ -6,7 +6,7 @@
 </head>
 <body>
     @include('template/navbar')
-    @include('template/sidebarAdmin')
+    @include('template/sidebarUsers')
 
     <div class="container">
         @if ($message = Session::get('success'))
@@ -17,13 +17,6 @@
         <div class="mt-4"> 
             <section class="content"> 
                 <br>
-                <div class = "pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('merek.create') }}"> 
-                        <i class="fa-solid fa-plus"></i>
-                            Tambah Data Merek
-                    </a>
-                </div>
-        
                 <form action='{{route('search')}}' method="post">
                     <div class="pull-right mb-2" class="wrapper"> 
                         @csrf

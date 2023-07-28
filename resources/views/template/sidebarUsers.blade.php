@@ -41,7 +41,7 @@
               </a>
           </li>
           <li class="nav-item"> 
-            <a href="#" class="nav-link">
+            <a href="/users/ukuranKarakter" class="nav-link">
               <i class="fa-solid fa-rectangle-xmark"></i>
                 <p>
                   Ukuran Karakter
@@ -49,7 +49,7 @@
               </a>
           </li>
           <li class="nav-item"> 
-            <a href="#" class="nav-link">
+            <a href="/users/mesin" class="nav-link">
               <i class="fa-solid fa-chevron-up"></i>
                 <p>
                   Merek
@@ -65,7 +65,7 @@
               </a>
           </li>
           <li class="nav-item"> 
-            <a href="#" class="nav-link">
+            <a href="/users/mesin" class="nav-link">
               <i class="fa-solid fa-bolt"></i>
                 <p>
                   Mesin

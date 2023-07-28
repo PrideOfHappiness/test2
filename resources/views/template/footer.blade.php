@@ -1,9 +1,9 @@
  <!-- /.content-wrapper -->
  <footer class="main-footer">
-    <strong>Copyright &copy; 2022 PT. Marga Kartika Motor.</strong>
+    <strong>Hak Cipta &copy; 2023 Renaldi Soeryadi.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 0.0.1
+      <b>Version</b> 0.1.0
     </div>
   </footer>
 

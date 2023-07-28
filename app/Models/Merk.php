@@ -14,5 +14,11 @@ class Merk extends Model
     protected $fillable = [
         'kode_merk',
         'nama_merk',
+        'no_urut',
+        'jenis_merek',
     ];
+
+    public function searchMerek($kata_kunci){
+        return $this->where('nama_merk', 'LIKE', '%' . $kata_kunci . '%')->get();
+    }
 }

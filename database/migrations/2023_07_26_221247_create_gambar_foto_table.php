@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('driving', function (Blueprint $table) {
+        Schema::create('gambar_foto', function (Blueprint $table) {
             $table->id();
-            $table->enum('location', ['LHD', 'MHD', 'RHD']);
+            $table->bigInteger('mobil_id')->unsigned();
             $table->string('namaFile');
             $table->timestamps();
+
+            $table->foreign('mobil_id')->references('id')->on('foto_mobil');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setir');
+        Schema::dropIfExists('gambar_foto');
     }
 };

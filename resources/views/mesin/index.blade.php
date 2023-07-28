@@ -2,43 +2,45 @@
 <html lang="en">
 <head>
     @include('template/header')
-    <title>Lokasi Setir Kendaraan</title>
+    <title>Daftar Mesin Kendaraan</title>
 </head>
 <body>
     @include('template/navbar')
     @include('template/sidebarAdmin')
 
-    <div class="container"> 
+    <div class="container">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif 
         <div class="mt-4"> 
             <section class="content"> 
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif
                 <br>
                 <div class = "pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('setir.create') }}"> 
+                    <a class="btn btn-success" href="{{ route('mesin.create') }}"> 
                         <i class="fa-solid fa-plus"></i>
-                            Tambah Data Lokasi Setir
+                            Tambah Data Mesin
                     </a>
                 </div>
+        
                 <table class="table">
                     <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Letak Setir</th>
-                        <th>Foto Contoh</th>
+                        <th>Kode</th>
+                        <th>Mesin</th>
+                        <th>Jenis</th>
                     </tr>
                     </thead>
                     <tbody> 
                         @php $i = 1 @endphp
-                        @foreach ($data as $wilayah)
+                        @foreach ($mesin as $wilayah)
                         <tr>
                             <td>{{ $i++ }} </td>
-                            <td>{{ $wilayah->getLocation() }} 
-                            </td>
-                            <td><img width="200px" src="{{ url('foto/letakSetir/' . $wilayah->namaFile)}}" </td>
+                            <td>{{ $wilayah->kode_mesin }} </td>
+                            <td>{{ $wilayah->nama_mesin }} </td>
+                            <td>{{ $wilayah->jenis_mesin }} </td>
                         </tr>
                         @endforeach
                     </tbody>

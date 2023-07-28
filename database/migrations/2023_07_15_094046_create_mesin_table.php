@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_mesin')->unique();
             $table->string('nama_mesin');
+            $table->enum('jenis_mesin', ['Internal Combustion Engine', 'Electrified engine']);
             $table->timestamps();
         });
     }

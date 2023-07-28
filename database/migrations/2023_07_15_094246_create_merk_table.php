@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_merk')->unique();
             $table->string('nama_merk');
-            $table->enum('jenis_merek', ['Passenger Car', 'Commercial Vehicle']);
+            $table->integer('no_urut');
+            $table->enum('jenis_merek', ['Passenger Vehicles', 'Commercial Vehicles']);
             $table->timestamps();
         });
     }

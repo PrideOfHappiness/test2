@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('driving', function (Blueprint $table) {
+        Schema::create('plat_nomor_foto', function (Blueprint $table) {
             $table->id();
-            $table->enum('location', ['LHD', 'MHD', 'RHD']);
+            $table->bigInteger('plat_id')->unsigned();
             $table->string('namaFile');
             $table->timestamps();
+
+            $table->foreign('plat_id')->references('id')->on('plat_nomor');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setir');
+        Schema::dropIfExists('plat_nomor_foto');
     }
 };

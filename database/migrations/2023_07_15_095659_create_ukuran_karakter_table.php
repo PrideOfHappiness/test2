@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('ukuran_karakter', function (Blueprint $table) {
             $table->id();
+            $table->string('kode', 10)->unique();
             $table->enum('ukuran', ['Pendek', 'Panjang']);
             $table->string('namaFile');
             $table->timestamps();

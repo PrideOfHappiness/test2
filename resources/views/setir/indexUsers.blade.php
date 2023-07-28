@@ -8,21 +8,16 @@
     @include('template/navbar')
     @include('template/sidebarAdmin')
 
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
     <div class="container"> 
         <div class="mt-4"> 
             <section class="content"> 
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif
                 <br>
-                <div class = "pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('setir.create') }}"> 
-                        <i class="fa-solid fa-plus"></i>
-                            Tambah Data Lokasi Setir
-                    </a>
-                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -33,11 +28,10 @@
                     </thead>
                     <tbody> 
                         @php $i = 1 @endphp
-                        @foreach ($data as $wilayah)
+                        @foreach ($location as $wilayah)
                         <tr>
                             <td>{{ $i++ }} </td>
-                            <td>{{ $wilayah->getLocation() }} 
-                            </td>
+                            <td>{{ $wilayah->location }} </td>
                             <td><img width="200px" src="{{ url('foto/letakSetir/' . $wilayah->namaFile)}}" </td>
                         </tr>
                         @endforeach
