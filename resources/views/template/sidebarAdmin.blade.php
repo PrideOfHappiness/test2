@@ -65,7 +65,7 @@
             </a>
           </li>
           <li class="nav-item"> 
-            <a href="#" class="nav-link">
+            <a href="/admin/platNomor" class="nav-link">
               <i class="fa-solid fa-rectangle-xmark"></i>
                 <p>
                   Data Plat Nomor

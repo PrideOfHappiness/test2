@@ -12,6 +12,7 @@ class DrivingLocation extends Model
     protected $table = 'driving';
 
     protected $fillable = [
+        'kode',
         'location',
         'namaFile',
     ];

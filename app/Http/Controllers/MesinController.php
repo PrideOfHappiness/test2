@@ -25,8 +25,9 @@ class MesinController extends Controller
     public function store(Request $request){
         $nama_mesin = $request->nama_mesin;
         $kategori = $request->status;
-        $acak = strtoupper(Str::random(3));
         $jumlahKataMesin = str_word_count($nama_mesin);
+        $angkaAcak = rand(1,9);
+        $angkaAcak1 = rand(100,999);
 
         if($jumlahKataMesin === 1){
             $singkatan = substr($nama_mesin, 0, 3);
@@ -41,12 +42,10 @@ class MesinController extends Controller
         }
 
         if($kategori == 'ICE'){
-            $karakterAwal = 'ICE';
-            $kode_mesin = $karakterAwal . strtoupper($singkatan) . $acak;
+            $kode_mesin = $angkaAcak . strtoupper($singkatan) . $angkaAcak1;
             $status = 'Internal Combustion Engine';
         }elseif ($kategori == 'ELE') {
-            $karakterAwal = 'ELE';
-            $kode_mesin = $karakterAwal . strtoupper($singkatan) . $acak;
+            $kode_mesin = $angkaAcak . strtoupper($singkatan) . $angkaAcak1;
             $status = 'Electrified engine';
         }else{
             return redirect()->route('mesin.create')

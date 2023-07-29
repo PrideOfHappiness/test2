@@ -38,7 +38,7 @@
                             <td>{{ $i++ }} </td>
                             <td>{{ $wilayah->getLocation() }} 
                             </td>
-                            <td><img width="200px" src="{{ url('foto/letakSetir/' . $wilayah->namaFile)}}" </td>
+                            <td><img width="200px" src="{{ url('foto/letakSetir/' . $wilayah->namaFile)}}"> </td>
                         </tr>
                         @endforeach
                     </tbody>

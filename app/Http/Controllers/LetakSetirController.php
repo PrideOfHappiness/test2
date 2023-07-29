@@ -28,6 +28,9 @@ class LetakSetirController extends Controller
         ]);
 
         $letakSetir = $request->status;
+        $angkaAcak = rand(1,99);
+        $karakter1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $karakter = [];
 
         if($request->hasFile('fotoDashboard')){
             $foto = $request->file('fotoDashboard');
@@ -35,7 +38,28 @@ class LetakSetirController extends Controller
             $foto->move('foto/letakSetir/', $namaFile);
         }
 
+        for($i = 0; $i < 26; $i++){
+            $char1 = $karakter1[$i];
+            for($j = 0; $j < 26; $j++){
+                $char2 = $karakter1[$j];
+                for($k = 0; $k < 26; $k++){
+                    $char3 = $karakter1[$k];
+                    $karakter[] = $char1 . $char2 . $char3;
+                }
+            }
+        }
+
+        shuffle($karakter);
+        $karakterJadi = $karakter[array_rand($karakter)];
+
+        if($letakSetir){
+            $kode = strtoupper(substr($letakSetir, 0, 2)) . $angkaAcak . ' ' . $karakterJadi;
+        }else{
+            return redirect()->route('setir.create')
+            ->with('error', 'Data belum lengkap! Silahkan isi data terlebih dahulu. ');
+        }
         $location = DrivingLocation::create([
+            'kode' => $kode,
             'location' => $letakSetir,
             'namaFile' => $namaFile,
         ]);

@@ -16,14 +16,6 @@
         @endif 
         <div class="mt-4"> 
             <section class="content"> 
-                <br>
-                <div class = "pull-right mb-2">
-                    <a class="btn btn-success" href="{{ route('platNomor.create') }}"> 
-                        <i class="fa-solid fa-plus"></i>
-                            Tambah Data Plat Nomor
-                    </a>
-                </div>
-        
                 <form action='#' method="post">
                     <div class="pull-right mb-2" class="wrapper"> 
                         @csrf
@@ -53,10 +45,11 @@
                             <td>{{ $wilayah->for }} </td>
                             <td>
                                 @if($foto->count() > 0)
+                                    <label for="gambar" class="form-label">Contoh Foto Plat Nomor</label>
                                     <div class="gambar-container">
-                                        @foreach($wilayah->platNomorFoto as $gambar)
+                                        @foreach($platNomorFoto as $gambar)
                                             <div class="mb-3">
-                                                <img width="150px" src="{{ asset('foto/plat_nomor/'. $gambar->namaFile) }}" alt="Gambar Jenis">
+                                                <img width="150px" src="{{ asset('foto/jenis/'. $gambar->namaFile) }}" alt="Gambar Jenis">
                                             </div>
                                         @endforeach
                                     </div>
@@ -65,9 +58,9 @@
                                 @endif
                             </td>
                             <td> 
-                                <form action = "{{ route('platNomor.destroy', $wilayah->id) }}" method="Post">
-                                    <a class="badge bg-info" href="{{ route('platNomor.show', $wilayah->id)}}">Detail Plat Nomor</span></a>
-                                    <a class="badge bg-warning" href="{{ route('platNomor.edit', $wilayah->id)}}">Edit Data Plat Nomor</span></a>
+                                <form action = "{{ route('platNomor.destroy', $kons->id) }}" method="Post">
+                                    <a class="badge bg-info" href="{{ route('platNomor.show', $kons->id)}}">Detail Plat Nomor</span></a>
+                                    <a class="badge bg-warning" href="{{ route('platNomor.edit', $kons->id)}}">Edit Data Plat Nomor</span></a>
                                     @csrf
                                         @method("DELETE")
                                         <button type="submit" class="badge bg-danger"> Hapus Data Plat Nomor</button>

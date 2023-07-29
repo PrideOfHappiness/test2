@@ -27,30 +27,40 @@ class MerekController extends Controller
 
     public function store(Request $request){
         $merek1 = $request->nama_merk;
-        $existingMerek = Merk::where('nama_merk', $merek1)->first();
+        $existingMerek = Merk::where('nama_merk', $merek1)->count();
         $kodeMerek = ''; 
-        $karakterAcak = strtoupper(Str::random(3));
         $jenis_merek = '';
+        $angkaAcak = rand(1,999);
+        $randomString = Str::random(2);
 
+        //percabangan dan pembentukan kode sesuai format plat nomor Indonesia (AA 9999 AAA)
         if ($request->input('jenis_merek') == 'P') {
             if ($existingMerek) {
-                $lastNumber = $existingMerek->nomor_urut + 1;
-                $kodeMerek = 'PC1' . $lastNumber . strtoupper(substr($merek1, 0, 3)) . $karakterAcak;
+                $randomIndex = rand(0, 10);
+                $karakterAcak = ['B', 'BA', 'BB', 'BD', 'BE', 'BG', 'BH', 'D', 'DA', 'DB'][$randomIndex];
+                $lastNumber = $existingMerek + 1;
+                $kodeMerek = $karakterAcak . ' ' . '1' . $angkaAcak . ' ' . strtoupper(substr($merek1, 0, 3));
                 $jenis_merek = 'Passenger Vehicles';
             } else {
-                $kodeMerek .= 'PC1' . strtoupper(substr($merek1, 0, 3)) . $karakterAcak;
+                $randomIndex = rand(0, 10);
+                $karakterAcak = ['A', 'AB', 'AD', 'AE', 'AG', 'AA', 'DC', 'DD', 'DE', 'DG', 'K'][$randomIndex];
                 $lastNumber = 1;
+                $kodeMerek = $karakterAcak . ' ' . $lastNumber . $angkaAcak . ' ' . strtoupper(substr($merek1, 0, 2));
                 $jenis_merek = 'Passenger Vehicles';
             }
         } elseif ($request->input('jenis_merek') == 'C') {
             $jenis_merek = '';
             if ($existingMerek) {
-                $lastNumber = $existingMerek->nomor_urut + 1;
-                $kodeMerek = 'CV0' . $lastNumber . strtoupper(substr($merek1, 0, 3)) . $karakterAcak;
+                $randomIndex = rand(0, 10);
+                $karakterAcak = ['KH', 'KT', 'KU', 'P', 'PA', 'PB', 'E', 'F', 'G', 'H', 'BK'][$randomIndex];
+                $lastNumber = $existingMerek + 1;
+                $kodeMerek = $karakterAcak . ' ' . '8' . $angkaAcak . ' ' . strtoupper(substr($merek1, 0, 3));
                 $jenis_merek = 'Commercial Vehicles';
             } else {
-                $kodeMerek .= 'CV0' . strtoupper(substr($merek1, 0, 3)) . $karakterAcak;
+                $randomIndex = rand(0, 10);
+                $karakterAcak = ['BM', 'BN', 'DH', 'DK', 'DL', 'DM', 'EA', 'EB', 'BP', 'L'][$randomIndex];
                 $lastNumber = 1;
+                $kodeMerek = $karakterAcak . ' ' . '9' . $angkaAcak . ' ' . strtoupper(substr($merek1, 0, 2));
                 $jenis_merek = 'Commercial Vehicles';
             }
         } elseif($jenis_merek != 'P' && $jenis_merek != 'C'){

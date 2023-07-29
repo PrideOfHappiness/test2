@@ -9,6 +9,7 @@ use App\Http\Controllers\JenisController;
 use App\Http\Controllers\MesinController;
 use App\Http\Controllers\UkuranKarakterController;
 use App\Http\Controllers\LetakSetirController;
+use App\http\Controllers\PlatNomorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::middleware(['Admin'])->group(function() {
     Route::resource('/admin/mesin', MesinController::class);
     Route::resource('/admin/ukuranKarakter', UkuranKarakterController::class);
     Route::resource('/admin/setir', LetakSetirController::class);
+    Route::resource('/admin/platNomor', PlatNomorController::class);
 });
 
 Route::middleware(['Users'])->group(function() {

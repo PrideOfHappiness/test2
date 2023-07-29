@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Karakter extends Model
+class PlatNomorFoto extends Model
 {
     use HasFactory;
 
-    protected $table = 'ukuran_karakter';
+    protected $table='plat_nomor_foto';
 
     protected $fillable = [
-        'kode',
-        'ukuran',
+        'plat_id',
         'namaFile',
     ];
+
+    public function platNomor(){
+        return $this->belongsTo(PlatNomor::class, "plat_id");
+    }
 }

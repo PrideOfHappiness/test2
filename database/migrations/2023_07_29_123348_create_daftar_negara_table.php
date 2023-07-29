@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('driving', function (Blueprint $table) {
+        Schema::create('daftar_negara', function (Blueprint $table) {
             $table->id();
-            $table->string('kode', 8)->unique();
-            $table->enum('location', ['LHD', 'MHD', 'RHD']);
-            $table->string('namaFile');
+            $table->string('nama_negara', 100)->unique();
+            $table->string('kode_registrasi_negara', 3)->unique();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setir');
+        Schema::dropIfExists('daftar_negara');
     }
 };

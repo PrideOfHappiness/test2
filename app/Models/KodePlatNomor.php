@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Karakter extends Model
+class KodePlatNomor extends Model
 {
     use HasFactory;
 
-    protected $table = 'ukuran_karakter';
+    protected $table = 'daftar_negara';
 
     protected $fillable = [
-        'kode',
-        'ukuran',
-        'namaFile',
+        'nama_negara',
+        'kode_registrasi_negara',
     ];
 }

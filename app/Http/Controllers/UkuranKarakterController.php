@@ -27,14 +27,15 @@ class UkuranKarakterController extends Controller
             'fotoKarakter' => 'required|mimes:jpeg,png,jpg,gif,svg'
         ]);
 
+        $karakter1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $karakter = $request->status;
-        $acak = Str::random(4);
+        $acak = rand(100,999);
 
         if($karakter == 'Panjang'){
-            $kode = strtoupper(substr($karakter, 0, 3)) . $acak;
+            $kode = strtoupper(substr($karakter, 0, 3)) . $karakter1[rand(0, strlen($karakter1) - 1)] .' ' . $acak;
             $ukuran = 'Panjang';
         }elseif($karakter == 'Pendek'){
-            $kode = strtoupper(substr($karakter, 0, 3)) . $acak;
+            $kode = strtoupper(substr($karakter, 0, 3)) . ' ' . $acak;
             $ukuran = 'Pendek';
         }else{
             return redirect()->route('ukuranKarakter.create')
@@ -48,6 +49,7 @@ class UkuranKarakterController extends Controller
         }
         
         $ukuranKarakter = Karakter::create([
+            'kode' => $kode,
             'ukuran' => $ukuran,
             'namaFile' => $namaFile,
         ]);

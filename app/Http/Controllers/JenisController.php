@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jenis;
 use App\Models\GambarJenis;
+use Illuminate\Support\Str;
 
 class JenisController extends Controller
 {
@@ -29,9 +30,12 @@ class JenisController extends Controller
         //Penyimpanan data Jenis non Gambar
         $namaJenis = $request->nama_jenis;
         $jumlahKataJenis = str_word_count($namaJenis);
+        $randomNumber = rand(1,999);
+        $karakterAcak = Str::random(3);
 
         if($jumlahKataJenis === 1){
-            $singkatan = substr($namaJenis, 0, 2);
+            $singkatan = substr($namaJenis, 0, 3);
+            $rangkaianKata = $singkatan . ' ' . $randomNumber;
         }else{
             $kata = explode(' ', $namaJenis);
             
@@ -40,10 +44,8 @@ class JenisController extends Controller
             }, $kata);
 
             $singkatan = implode("", $ambil_karakter_pertama);
+            $rangkaianKata = $singkatan . ' ' . $karakterAcak;
         }
-
-        $randomNumber = rand(1,99);
-        $rangkaianKata = $singkatan . $randomNumber;
 
         $jenis = Jenis::create([
             'kode_jenis' => $rangkaianKata,

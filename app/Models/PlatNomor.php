@@ -14,9 +14,8 @@ class PlatNomor extends Model
     protected $fillable = [
         'kode_negara',
         'nama_negara',
-        'issueing',
+        'for',
         'keterangan',
-        'namaFile',
     ];
 
     public function cekKetersediaanNegara($nama){
@@ -30,5 +29,10 @@ class PlatNomor extends Model
 
         $this->nama = $nama;
         $this->save();
+    }
+
+    public function platNomorFoto()
+    {
+        return $this->hasMany(PlatNomorFoto::class, 'plat_id');
     }
 }
