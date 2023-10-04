@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('namaFile');
             $table->timestamps();
 
-            $table->foreign('plat_id')->references('id')->on('plat_nomor');
+            $table->foreign('plat_id')->references('id')->on('plat_nomor')->onDelete('cascade');;
         });
     }
 

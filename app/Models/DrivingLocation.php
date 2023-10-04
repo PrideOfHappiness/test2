@@ -30,4 +30,7 @@ class DrivingLocation extends Model
                 return 'Unknown';
         }
     }
+    public function fotoMobil(){
+        return $this->hasMany(FotoMobil::class, "letak_setir");
+    }
 }

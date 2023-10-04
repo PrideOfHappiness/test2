@@ -23,7 +23,9 @@ class User extends Authenticatable
         'status',
         'email',
         'google_id',
+        'providers',
         'password',
+        'fotoUsers',
     ];
 
     /**

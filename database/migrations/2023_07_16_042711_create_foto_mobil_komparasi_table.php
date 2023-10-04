@@ -46,6 +46,11 @@ return new class extends Migration
             $table->bigInteger('letak_setir_mobil2')->unsigned();
             $table->bigInteger('letak_setir_mobil3')->unsigned()->nullable();
             $table->bigInteger('letak_setir_mobil4')->unsigned()->nullable();
+            //Mobil
+            $table->bigInteger('mobil1')->unsigned();
+            $table->bigInteger('mobil2')->unsigned();
+            $table->bigInteger('mobil3')->unsigned()->nullable();
+            $table->bigInteger('mobil4')->unsigned()->nullable();
             //Lain-lain
             $table->bigInteger('id_penggungah')->unsigned();
             $table->timestamps();
@@ -80,6 +85,11 @@ return new class extends Migration
             $table->foreign('letak_setir_mobil2')->references('id')->on('driving');
             $table->foreign('letak_setir_mobil3')->references('id')->on('driving');
             $table->foreign('letak_setir_mobil4')->references('id')->on('driving');
+            //Mobil
+            $table->foreign('mobil1')->references('id')->on('foto_mobil');
+            $table->foreign('mobil2')->references('id')->on('foto_mobil');
+            $table->foreign('mobil3')->references('id')->on('foto_mobil');
+            $table->foreign('mobil4')->references('id')->on('foto_mobil');
             //Lain-Lain
             $table->foreign('id_penggungah')->references('id')->on('users');
         });

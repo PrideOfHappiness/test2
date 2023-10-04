@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_jenis')->unique();
             $table->string('nama_jenis');
+            $table->string('variasi_bodi')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

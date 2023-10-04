@@ -14,10 +14,15 @@ class Jenis extends Model
     protected $fillable = [
         'kode_jenis',
         'nama_jenis',
+        'variasi_bodi',
         'keterangan',
     ];
 
     public function GambarJenis(){
         return $this->hasMany(GambarJenis::class, "jenis_id");
+    }
+
+    public function FotoMobil(){
+        return $this->hasMany(FotoMobil::class, "jenis_mobil");
     }
 }

@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('nama_mobil', 100);
             $table->string('nama_tipe', 30)->nullable();
             $table->string('kode_bodi', 15)->nullable();
+            $table->string('asal_negara', 100)->nullable();
             $table->bigInteger('plat_nomor')->unsigned();
             $table->bigInteger('jenis_mobil')->unsigned();
             $table->bigInteger('jenis_mesin')->unsigned();
             $table->bigInteger('ukuran')->unsigned();
             $table->bigInteger('letak_setir')->unsigned();
             $table->integer('part');
-            $table->string('nama_foto');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 

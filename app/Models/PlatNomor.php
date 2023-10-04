@@ -35,4 +35,8 @@ class PlatNomor extends Model
     {
         return $this->hasMany(PlatNomorFoto::class, 'plat_id');
     }
+
+    public function fotoMobil(){
+        return $this->hasMany(FotoMobil::class, "plat_nomor");
+    }
 }

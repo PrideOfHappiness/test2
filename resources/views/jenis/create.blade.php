@@ -22,6 +22,10 @@
                         <textarea id="keterangan" name="keterangan" class="form-control" rows="4" required></textarea>
                     </div>
                     <div class="mb-3">
+                        <label for="variasi" class="form-label">Variasi jenis bodi (apabila tersedia)</label>
+                        <textarea id="variasi" name="variasi" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="file_contoh_jenis" class="form-label">Gambar Contoh Jenis Kendaraan</label>
                         <input type="file" class="form-control" id="file_contoh_jenis[]" name="file_contoh_jenis[]" required multiple>
                     </div>

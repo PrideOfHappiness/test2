@@ -13,7 +13,8 @@
         <div class="info"> 
           <a href="{{ route('usersHome')}}" class="d-block">
             @auth
-              {{ auth()->user()->nama }}
+              <img src="{{ asset('style/dist/img/'. auth()->user()->fotoUsers) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+              <span>{{ auth()->user()->nama }}</span>
             @endauth
           </a>
         </div>
@@ -75,7 +76,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">Input Data</li>
             <li class="nav-item"> 
-                <a href="#" class="nav-link">
+                <a href="/users/fotoMobil" class="nav-link">
                   <i class="fa-solid fa-car"></i>
                     <p>
                       Unggah Data Mobil

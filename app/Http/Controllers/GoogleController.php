@@ -22,11 +22,14 @@ class GoogleController extends Controller
 
             if(!$userDB){
                 $newUser = User::create([
-                    'nama' => $googleUser->getName(),
-                    'email' => $googleUser->getEmail(),
+                    'nama' => $googleUser->name,
+                    'email' => $googleUser->email,
                     'google_id' => $googleUser->getId(),
                     'status' => 'Users',
+                    'providers' => 'Google',
+                    'fotoUsers' => $googleUser->avatar,
                 ]);
+                file_put_contents('style/dist/img/' . $googleUser->id . '.jpg', $googleUser->avatar);
 
                 Auth::login($newUser);
                 return redirect('/users/home');

@@ -13,7 +13,8 @@
       <div class="info"> 
         <a href="{{ route('adminHome') }}" class="d-block">
           @auth
-            {{ auth()->user()->nama }}
+            <img src="{{ asset('style/dist/img/'. auth()->user()->fotoUsers) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span>{{ auth()->user()->nama }}</span>
           @endauth
         </a>
       </div>

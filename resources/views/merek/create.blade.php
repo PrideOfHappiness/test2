@@ -38,11 +38,11 @@
                 <p6>Van/Minibus/Panel Van,</p6>
                 <p6>Truck,</p6>
                 <p6>Bis, dan</p6>
-                <p6>Kendaraan dengan fungsi khusus (contoh: Ambulans, Pemadam Kebakaran)</p6>
+                <p6>kendaraan dengan fungsi atau dengan kebutuhan khusus (contoh: Ambulans, Pemadam Kebakaran, <i>Recreational Vehicle</i>, dll)</p6>
                 <br>
                 <br>
                 <p6>2. Untuk pengisian kolom "Commercial Vehicles" dengan merek yang sama dengan Passenger Vehiclesnya (contoh:Toyota, Hyundai, Ford, Chevrolet, VW, dll), </p6>
-                <p6>dapat diisi dengan merek yang sama dengan kolom jenis merek yang berbeda. </p6>
+                <p6>dapat diisi dengan merek yang sama dengan kolom jenis merek yang berbeda dengan tambahan "Commercial Vehicles" secara otomatis. </p6>
             </section>
         </div>
     </div>

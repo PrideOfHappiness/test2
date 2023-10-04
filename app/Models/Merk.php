@@ -21,4 +21,8 @@ class Merk extends Model
     public function searchMerek($kata_kunci){
         return $this->where('nama_merk', 'LIKE', '%' . $kata_kunci . '%')->get();
     }
+
+    public function fotoMobil(){
+        return $this->hasMany(FotoMobil::class, "merk_mobil");
+    }
 }

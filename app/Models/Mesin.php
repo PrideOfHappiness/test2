@@ -16,4 +16,8 @@ class Mesin extends Model
         'nama_mesin',
         'jenis_mesin',
     ];
+
+    public function fotoMobil(){
+        return $this->hasMany(FotoMobil::class, "jenis_mesin");
+    }
 }

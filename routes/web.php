@@ -10,6 +10,7 @@ use App\Http\Controllers\MesinController;
 use App\Http\Controllers\UkuranKarakterController;
 use App\Http\Controllers\LetakSetirController;
 use App\http\Controllers\PlatNomorController;
+use App\Http\Controllers\FotoMobilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,5 +60,7 @@ Route::middleware(['Users'])->group(function() {
     Route::post('/users/merek/cari', [MerekController::class, 'search'])->name('searchUsers');
     Route::get('/users/mesin', [MesinController::class, 'index_users']);
     Route::get('/users/ukuranKarakter', [UkuranKarakterController::class, 'indexUsers']);
+    Route::resource('/users/fotoMobil', FotoMobilController::class);
+    Route::post('/users/mobil/cari', [MerekController::class, 'search'])->name('search');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

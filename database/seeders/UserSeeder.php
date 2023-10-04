@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
             'status' => 'Users',
             'email' => 'user1@gmail.com',
             'password' => bcrypt('123456'),
+            'providers' => 'Mandiri',
+            'fotoUsers' => '2017-03-4--20-35-33.jpeg',
         ]);
 
         User::create([
@@ -29,6 +31,8 @@ class UserSeeder extends Seeder
             'status' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123456789'),
+            'providers' => 'Mandiri',
+            'fotoUsers' => '2017-03-4--19-47-44.jpeg',
         ]);
     }
 }

@@ -32,6 +32,10 @@
                     <label for="keterangan" class="form-label">Keterangan Jenis</label>
                     <textarea class="form-control" id="keterangan" name="keterangan" readonly> {{ $jenis->keterangan }} </textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="keterangan" class="form-label">Variasi bodi (apabila tersedia)</label>
+                    <textarea class="form-control" id="keterangan" name="keterangan" readonly> {{ $jenis->variasi_bodi }} </textarea>
+                </div>
                 @if($jenisGambar->count() > 0)
                     <label for="gambar" class="form-label">Contoh Foto Kendaraan</label>
                     <div class="gambar-container">

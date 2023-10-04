@@ -30,11 +30,11 @@ class JenisController extends Controller
         //Penyimpanan data Jenis non Gambar
         $namaJenis = $request->nama_jenis;
         $jumlahKataJenis = str_word_count($namaJenis);
-        $randomNumber = rand(1,999);
+        $randomNumber = rand(100,999);
         $karakterAcak = Str::random(3);
 
         if($jumlahKataJenis === 1){
-            $singkatan = substr($namaJenis, 0, 3);
+            $singkatan = strtoupper(substr($namaJenis, 0, 3));
             $rangkaianKata = $singkatan . ' ' . $randomNumber;
         }else{
             $kata = explode(' ', $namaJenis);
@@ -44,12 +44,13 @@ class JenisController extends Controller
             }, $kata);
 
             $singkatan = implode("", $ambil_karakter_pertama);
-            $rangkaianKata = $singkatan . ' ' . $karakterAcak;
+            $rangkaianKata = $singkatan . $karakterAcak;
         }
 
         $jenis = Jenis::create([
             'kode_jenis' => $rangkaianKata,
             'nama_jenis' => $namaJenis,
+            'variasi_bodi' => $request->variasi,
             'keterangan' => $request->keterangan,
         ]);
 
@@ -78,5 +79,48 @@ class JenisController extends Controller
         $jenis_users = Jenis::find($id);
         $jenisGambar = $jenis_users->GambarJenis;
         return view('jenis.showUsers', compact('jenis_users', 'jenisGambar'));
+    }
+
+    public function edit($id){
+        $jenis = Jenis::find($id);
+        $jenisGambar = $jenis->GambarJenis;
+        return view('jenis.edit', compact('jenis', 'jenisGambar'));
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'file_contoh_jenis.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
+        $jenis = Jenis::find($id);
+
+        $kode = $request->kode_jenis;
+        $namaJenis = $request->nama_jenis;
+        $keterangan = $request->keterangan;
+
+        if($request->hasFile('file_contoh_jenis')){
+            foreach($request->file('file_contoh_jenis') as $file){
+                $jenisGambar = new GambarJenis();
+                $jenisGambar->jenis_id = $jenis->id;
+                $jenisGambar->namaFile = $file->getClientOriginalName();
+                $file->move('foto/jenis', $file->getClientOriginalName()); // Simpan file gambar di penyimpanan
+                $jenisGambar->save();
+            }
+
+            $jenis->update([
+                'kode_jenis' => $kode,
+                'nama_jenis' => $namaJenis,
+                'keterangan' => $keterangan,
+            ]);
+        }else{
+            $jenis->update([
+                'kode_jenis' => $kode,
+                'nama_jenis' => $namaJenis,
+                'keterangan' => $keterangan,
+            ]);
+        }
+
+            return redirect()->route('jenis.index')
+                ->with('success', 'Data Jenis ' . $namaJenis .' berhasil diubah!');
     }
 }

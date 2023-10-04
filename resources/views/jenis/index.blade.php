@@ -43,7 +43,13 @@
                             <td>{{ $wilayah->nama_jenis }} </td>
                             <td>{{ $wilayah->keterangan }} </td>
                             <td> 
-                                <a class="badge bg-info" href="{{ route('jenis.show', $wilayah->id)}}">Detail Jenis</span></a>
+                                <form action = "{{ route('jenis.destroy', $wilayah->id) }}" method="Post">
+                                    <a class="badge bg-info" href="{{ route('jenis.show', $wilayah->id)}}">Detail Jenis</span></a>
+                                    <a class="badge bg-warning" href="{{ route('jenis.edit', $wilayah->id)}}">Edit Data Jenis</span></a>
+                                    @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="badge bg-danger"> Hapus Data Jenis</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

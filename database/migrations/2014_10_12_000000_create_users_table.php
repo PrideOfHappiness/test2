@@ -22,6 +22,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('google_id')->nullable();
+            $table->enum('providers', ['Mandiri', 'Google']);
+            $table->string('fotoUsers')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
